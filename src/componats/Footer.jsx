@@ -19,7 +19,7 @@ function Footer() {
           <Col lg={3} md={4} sm={12} className="logo_call">
             <ul className="list-unstyled listFooter  ">
               <li className="">
-                <img src="public/logo.png" className="w-50 mb-3" />
+                <img src="/logo.png" className="w-50 mb-3" />
               </li>
               <li className="m">
                 <Link to={"/"} className="footertext">

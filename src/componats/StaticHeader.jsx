@@ -108,7 +108,7 @@ export default function StaticHeader() {
 
         <div className="logo" style={{ width: "120px" }}>
           <Link to={"/"}>
-            <img src="/public/logo.png" className="w-100" />{" "}
+            <img src="/logo.png" className="w-100" />{" "}
           </Link>{" "}
         </div>
         <div className="rightIcons" style={{ display: "flex", gap: "10px" }}>
