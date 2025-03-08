@@ -15,7 +15,7 @@ export default function StaticHeader() {
   const [isFixed, setIsFixed] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 200) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -116,7 +116,7 @@ export default function StaticHeader() {
             <PersonIcon className="mx-2" />
           </Link>
 
-          <Link to={"/favorites"}>
+          <Link to={"/Wishlist"}>
             <Badge color="default" badgeContent={favorites.length} max={999}>
               <FavoriteBorderIcon className="mx-2" />
             </Badge>

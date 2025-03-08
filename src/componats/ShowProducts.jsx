@@ -58,7 +58,7 @@ function ShowProducts() {
       {randomItems?.map((product) => {
         return (
           <Col lg={4} md={6} sm={12} key={product.id}>
-            <Link to={"/s"}>
+            <Link to={"/"}>
               <div className="cardProduct">
                 <div className="price_fav">
                   <div className="price">

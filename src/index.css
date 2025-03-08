@@ -686,7 +686,7 @@ a {
   align-items: center;
 }
 .searchItems {
-  margin: 20hepx;
+  margin: 20px;
   border: 1px solid;
   padding: 0 5px;
 }
@@ -695,5 +695,18 @@ a {
   outline: none;
   border: none;
 }
-.searchItems svg {
+.inStock {
+  color: green;
+}
+.inStock svg {
+  font-size: 14px;
+}
+.delete svg {
+  margin-left: 10px;
+  font-size: 18px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.delete:hover svg {
+  color: var(--red-color);
 }
