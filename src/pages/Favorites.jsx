@@ -180,7 +180,14 @@ function Favorites() {
         )}
       </div>
       <div className="">
-        <Container className="my-5">
+        <Container
+          className="my-5"
+          style={{
+            borderTop: "1px solid #ccc",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+          }}
+        >
           <h2 className="text-center ">Follow Us</h2>
           <div className="icons text-center">
             <svg
