@@ -15,6 +15,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { toggleFav } from "../RTK/Slices/favorites-slice";
 import BasicBreadcrumbs from "../componats/Routed";
+import { addToCart } from "../RTK/Slices/addToCart-slice";
+import Swal from "sweetalert2";
 function Favorites() {
   const [width, setWidth] = useState(window.innerWidth); // 770
   window.addEventListener("resize", () => {
@@ -100,6 +102,9 @@ function Favorites() {
                             type="button"
                             id="button-addon2"
                             className="btn btn-primary"
+                            onClick={() => {
+                              dispatch(addToCart(product));
+                            }}
                           >
                             Add to Cart
                           </button>
@@ -118,10 +123,21 @@ function Favorites() {
                 </Table>
               </TableContainer>
             ) : (
-              <Row className="my-5" style={{ gap: "40px" }}>
+              <Row
+                className="my-5"
+                style={{ gap: "40px", justifyContent: "center" }}
+              >
                 {favorites.map((product) => {
                   return (
-                    <Col key={product.id} xs={9}>
+                    <Col
+                      key={product.id}
+                      xs={10}
+                      style={{
+                        padding: "20px",
+                        borderRadius: "6px",
+                        boxShadow: "7px 4px 20px 0px #ccc",
+                      }}
+                    >
                       <div
                         className="w-100"
                         style={{
@@ -159,6 +175,24 @@ function Favorites() {
                           type="button"
                           id="button-addon2"
                           className="btn btn-primary w-75"
+                          onClick={() => {
+                            dispatch(addToCart(product));
+                            const Toast = Swal.mixin({
+                              toast: true,
+                              position: "top-end",
+                              showConfirmButton: false,
+                              timer: 3000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                              },
+                            });
+                            Toast.fire({
+                              icon: "success",
+                              title: "Added to Cart",
+                            });
+                          }}
                         >
                           Add to Cart
                         </button>
@@ -183,7 +217,6 @@ function Favorites() {
         <Container
           className="my-5"
           style={{
-            borderTop: "1px solid #ccc",
             paddingTop: "10px",
             paddingBottom: "10px",
           }}

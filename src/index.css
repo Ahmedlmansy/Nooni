@@ -582,11 +582,25 @@ a {
 .signUp {
   order: 4;
 }
-
+#button-addon1,
+#button-addon2 {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+#button-addon1 {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  transition: all 0.5s ease;
+}
+#button-addon1:hover {
+  border-color: #d10202;
+  color: #d10202;
+}
 #button-addon2 {
   background-color: #000;
-  transition: all 0.5s ease;
-  border-radius: 0;
 }
 #button-addon2:hover {
   background-color: #d10202;
@@ -707,4 +721,63 @@ a {
 }
 .delete:hover svg {
   color: var(--red-color);
+}
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding: 5px;
+  width: 80px;
+  height: 30px;
+}
+
+.quantity-btn {
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.quantity {
+  margin: 0 10px;
+  font-size: 14px;
+}
+.addCoupon {
+  display: flex;
+  justify-content: space-between;
+}
+.inputCoupon {
+  border: 1px solid #000;
+  padding: 5px;
+  width: 220px;
+  display: flex;
+  height: 45px;
+  text-align: center;
+  align-items: center;
+}
+.inputCoupon span {
+  width: 25%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.inputCoupon input {
+  border: none;
+  outline: none;
+  width: 75%;
+}
+.emptyCart {
+  width: 175px;
+}
+.h_card_total {
+  font-weight: bold;
+  font-size: 15px;
+}
+.slider-container {
+  overflow: visible !important;
+}
+.slick-arrow {
+  background-color: #848484 !important;
+  color: white !important;
 }

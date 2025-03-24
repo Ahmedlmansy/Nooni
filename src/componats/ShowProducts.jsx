@@ -7,10 +7,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Swal from "sweetalert2";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { toggleFav } from "../RTK/Slices/favorites-slice";
+import { addToCart } from "../RTK/Slices/addToCart-slice";
 
 function ShowProducts() {
   // get all products
@@ -100,22 +100,8 @@ function ShowProducts() {
                     <button
                       className=""
                       onClick={(e) => {
+                        dispatch(addToCart(product));
                         e.preventDefault();
-                        const Toast = Swal.mixin({
-                          toast: true,
-                          position: "top-end",
-                          showConfirmButton: false,
-                          timer: 3000,
-                          timerProgressBar: true,
-                          didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                          },
-                        });
-                        Toast.fire({
-                          icon: "success",
-                          title: "Added to Cart",
-                        });
                       }}
                     >
                       <AddShoppingCartIcon
