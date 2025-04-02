@@ -76,8 +76,7 @@ function ViewCart() {
     ],
   };
   // Shipping
-  const [shipping, setShipping] = useState(0);
-
+  const [shipping, setShipping] = useState(10);
   const handleChange = (e) => {
     setShipping(parseInt(e.target.value, 10));
   };
@@ -98,7 +97,12 @@ function ViewCart() {
   // Subtotal
   const subtotal =
     cart.length > 0
-      ? cart.reduce((total, item) => total + item.price * item.quantity, 0)
+      ? parseFloat(
+          cart.reduce(
+            (total, item) => total + item.discount_price * item.quantity,
+            0
+          )
+        )
       : 0;
   // get all products
   const allItems = useSelector((state) => state.items.items);
@@ -408,8 +412,8 @@ function ViewCart() {
             <div className="w-50">
               <FormControl onChange={handleChange}>
                 <RadioGroup
+                  defaultValue={10}
                   aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="female"
                   name="radio-buttons-group"
                 >
                   <FormControlLabel

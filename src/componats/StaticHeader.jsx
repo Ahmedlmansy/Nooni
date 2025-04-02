@@ -24,7 +24,10 @@ export default function StaticHeader() {
   // Subtotal
   const subtotal =
     cart.length > 0
-      ? cart.reduce((total, item) => total + item.price * item.quantity, 0)
+      ? cart.reduce(
+          (total, item) => total + item.discount_price * item.quantity,
+          0
+        )
       : 0;
   // header styled after scroling
   const [isFixed, setIsFixed] = useState(false);
@@ -314,7 +317,7 @@ export default function StaticHeader() {
                         </button>
                       </div>
                     </Link>
-                    <Link>
+                    <Link to={"/Checkout"}>
                       <div className="d-flex justify-content-center">
                         <button
                           type="button"

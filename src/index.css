@@ -781,3 +781,10 @@ a {
   background-color: #848484 !important;
   color: white !important;
 }
+.css-0 {
+  display: flex;
+  gap: 20px;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0, 0, 0, 0.425) !important;
+}
