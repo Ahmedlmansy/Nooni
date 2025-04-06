@@ -549,6 +549,13 @@ a {
   overflow: visible;
 }
 
+@media (max-width: 768px) {
+  .cardProduct .details {
+    overflow: visible !important;
+    bottom: 35px !important;
+  }
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #413b3b !important;
