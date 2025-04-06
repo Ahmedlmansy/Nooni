@@ -184,6 +184,7 @@ function CheckoutPage() {
             </Box>
             <Box className="mt-3">
               <TextField
+                type="text"
                 className="w-100"
                 id="streetAddress"
                 label="Street address"
@@ -194,6 +195,7 @@ function CheckoutPage() {
             </Box>
             <Box className="mt-3">
               <TextField
+                type="number"
                 className="w-100"
                 id="phoneNumber"
                 label="Phone Number"

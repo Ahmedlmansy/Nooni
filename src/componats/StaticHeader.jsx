@@ -251,7 +251,8 @@ export default function StaticHeader() {
                               <div className="quantity-container">
                                 <button
                                   className="quantity-btn"
-                                  onClick={() =>
+                                  onClick={(e) =>
+                                    e.preventDefault() ||
                                     dispatch(decreaseQuantity(item.id))
                                   }
                                 >
@@ -262,7 +263,8 @@ export default function StaticHeader() {
                                 </span>
                                 <button
                                   className="quantity-btn"
-                                  onClick={() =>
+                                  onClick={(e) =>
+                                    e.preventDefault() ||
                                     dispatch(increaseQuantity(item.id))
                                   }
                                 >

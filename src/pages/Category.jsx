@@ -22,8 +22,6 @@ function Category() {
     document.title = `Nooni - ${Category}`;
     dispatch(fetchItmes());
   }, [dispatch]);
-  const decodedName = decodeURIComponent(Category.replace(/%20/g, " "));
-  console.log(decodedName);
   // Equipment for the discount account
   function calculateDiscount(originPrice, discountPrice) {
     let discountPercentage =

@@ -164,12 +164,8 @@ function Shop() {
         <hr />
         <Row>
           {/* Offcanvas Button*/}
-          <Col lg={2}>
-            <Button
-              variant="dark"
-              onClick={handleShow}
-              className="d-lg-none mt-3"
-            >
+          <Col lg={2} className="d-lg-none d-flex justify-content-start">
+            <Button variant="dark" onClick={handleShow} className=" mt-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
