@@ -57,7 +57,7 @@ function SliderCategory() {
           }}
         >
           {mixed.map((cat, i) => (
-            <Link key={i} to={`/Shop/${cat.name}`}>
+            <Link key={i} to={`/Shop/${encodeURIComponent(cat.name)}`}>
               <div
                 className="col d-flex align-items-center slider-item"
                 style={{ width: "240px", height: "100px", padding: "10px" }}

@@ -4,7 +4,7 @@ import Favorites from "./pages/Favorites";
 import ViewCart from "./pages/ViewCart";
 import CheckoutPage from "./pages/Checkout";
 import Shop from "./pages/Shop";
-// import Test from "./componats/test";
+import Category from "./pages/Category";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/Cart" element={<ViewCart />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
         <Route path="/Shop" element={<Shop />} />
-        {/* <Route path="/test" element={<Test />} /> */}
+        <Route path="/Shop/:Category" element={<Category />} />
       </Routes>
     </>
   );

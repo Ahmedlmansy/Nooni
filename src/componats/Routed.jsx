@@ -23,7 +23,11 @@ export default function BasicBreadcrumbs() {
 
           return isLast ? (
             <Typography key={to} sx={{ color: "text.primary" }}>
-              {value}
+              {value
+                .replace(/%20/g, " ")
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}
             </Typography>
           ) : (
             <Link
