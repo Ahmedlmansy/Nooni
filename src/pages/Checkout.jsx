@@ -91,7 +91,6 @@ function CheckoutPage() {
       subtotal: subtotal,
       total: total,
     };
-    console.log("Order Data:", orderData);
     Swal.fire({
       icon: "success",
       title: "Order Placed",
@@ -99,6 +98,7 @@ function CheckoutPage() {
       confirmButtonColor: "#000",
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log("Order Data:", orderData);
         navigate("/");
         setTimeout(() => {
           dispatch(clearCart()); // Clear the cart after placing the order
