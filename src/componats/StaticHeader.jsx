@@ -215,84 +215,90 @@ export default function StaticHeader() {
                 <p>Your cart is currently empty</p>
               </div>
             ) : (
-              <div className="" style={{ position: "relative" }}>
+              <div
+                className=""
+                style={{ position: "relative", minWidth: "370px !important" }}
+              >
                 <div
                   className="cartItems"
-                  style={{ height: "560px", overflowX: "scroll" }}
+                  style={{
+                    height: "560px",
+                    overflowX: "scroll",
+                    minWidth: "370px",
+                  }}
                 >
                   {cart.map((item) => {
                     return (
-                      <Link to={"/"} key={item.id}>
-                        <div className="cartItem w-100">
-                          <div
-                            className="productCart"
-                            style={{
-                              display: "flex",
-                              gap: "10px",
-                              padding: "10px",
-                              alignItems: "center",
-                            }}
-                          >
-                            <div className="imgCart">
+                      <div className="cartItem w-100" key={item.id}>
+                        <div
+                          className="productCart"
+                          style={{
+                            display: "flex",
+                            gap: "10px",
+                            padding: "10px",
+                            alignItems: "center",
+                          }}
+                        >
+                          <div className="imgCart">
+                            <Link>
                               <img
                                 src={item.image_path}
                                 style={{ width: "100px" }}
                               />
-                            </div>
-                            <div
-                              className="detailsCart text-dark"
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "10px",
-                              }}
-                            >
-                              <h4 style={{ fontSize: " 18px" }}>{item.name}</h4>
-                              <div className="quantity-container">
-                                <button
-                                  className="quantity-btn"
-                                  onClick={(e) =>
-                                    e.preventDefault() ||
-                                    dispatch(decreaseQuantity(item.id))
-                                  }
-                                >
-                                  −
-                                </button>
-                                <span className="quantity">
-                                  {item.quantity}
-                                </span>
-                                <button
-                                  className="quantity-btn"
-                                  onClick={(e) =>
-                                    e.preventDefault() ||
-                                    dispatch(increaseQuantity(item.id))
-                                  }
-                                >
-                                  +
-                                </button>
-                              </div>
-                              <div className="price">
-                                <span className="originPrice me-2">
-                                  ${item.price}
-                                </span>
-                                <span className="discountPrice">
-                                  ${item.discount_price}{" "}
-                                </span>{" "}
-                              </div>
-                            </div>
-                            <div className="ms-auto">
-                              <span
-                                className="delete"
-                                onClick={() => {
-                                  dispatch(removeFromCart(item));
-                                }}
+                            </Link>
+                          </div>
+                          <div
+                            className="detailsCart text-dark"
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "10px",
+                            }}
+                          >
+                            <h4 style={{ fontSize: " 18px" }}>{item.name}</h4>
+                            <div className="quantity-container">
+                              <button
+                                className="quantity-btn"
+                                disabled={item.quantity === 1}
+                                onClick={(e) =>
+                                  e.preventDefault() ||
+                                  dispatch(decreaseQuantity(item.id))
+                                }
                               >
-                                <DeleteOutlineIcon />
+                                −
+                              </button>
+                              <span className="quantity">{item.quantity}</span>
+                              <button
+                                className="quantity-btn"
+                                onClick={(e) =>
+                                  e.preventDefault() ||
+                                  dispatch(increaseQuantity(item.id))
+                                }
+                              >
+                                +
+                              </button>
+                            </div>
+                            <div className="price">
+                              <span className="originPrice me-2">
+                                ${item.price}
                               </span>
+                              <span className="discountPrice">
+                                ${item.discount_price}{" "}
+                              </span>{" "}
                             </div>
                           </div>
+                          <div className="ms-auto">
+                            <span
+                              className="delete"
+                              onClick={() => {
+                                dispatch(removeFromCart(item));
+                              }}
+                            >
+                              <DeleteOutlineIcon />
+                            </span>
+                          </div>
                         </div>
-                      </Link>
+                      </div>
                     );
                   })}
                   <div
