@@ -21,38 +21,43 @@ function SliderCategory() {
     img: `/${key.replace(/\s/g, "_")}.png`,
   }));
 
-    const mixed = [...sliderContent, ...sliderContent, ...sliderContent , ...sliderContent, ...sliderContent];
-    const itemWidth = 260; 
+  const mixed = [
+    ...sliderContent,
+    ...sliderContent,
+    ...sliderContent,
+    ...sliderContent,
+    ...sliderContent,
+  ];
+  const itemWidth = 260;
   const totalItems = mixed.length;
-    const maxOffset = -itemWidth * totalItems / 2;
-    
+  const maxOffset = (-itemWidth * totalItems) / 2;
+
   const [xPos, setXPos] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setXPos((prev) => {
         const nextPos = prev - itemWidth;
-        return nextPos <= maxOffset ? 0 : nextPos; 
+        return nextPos <= maxOffset ? 0 : nextPos;
       });
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [maxOffset]);
-
 
   return (
     <Container>
       <div className="slider-wrapper overflow-hidden my-5">
         <motion.div
           className="d-flex slider-track"
-          animate={{ x: xPos }} 
-           transition={{
+          animate={{ x: xPos }}
+          transition={{
             ease: "easeInOut",
-            duration: 1, 
+            duration: 1,
           }}
         >
           {mixed.map((cat, i) => (
-            <Link key={i} to="/dlskdslk">
+            <Link key={i} to={`/Shop/${cat.name}`}>
               <div
                 className="col d-flex align-items-center slider-item"
                 style={{ width: "240px", height: "100px", padding: "10px" }}

@@ -788,3 +788,16 @@ a {
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.425) !important;
 }
+/* Shop.css */
+.active > .page-link,
+.page-link.active {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
+.page-link {
+  color: #000 !important;
+  background-color: #fff !important;
+  outline: none !important;
+}

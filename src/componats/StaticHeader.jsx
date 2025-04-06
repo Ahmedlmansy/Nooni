@@ -82,7 +82,7 @@ export default function StaticHeader() {
               <Link to={"/"} className="linkNav">
                 <li className="linkDrawer active">Home</li>
               </Link>
-              <Link to={"/"} className="linkNav">
+              <Link to={"/Shop"} className="linkNav">
                 <li className="linkDrawer">Shop</li>
               </Link>
               <Link to={"/"} className="linkNav">
