@@ -224,7 +224,7 @@ export default function StaticHeader() {
                   style={{
                     height: "560px",
                     overflowX: "scroll",
-                    minWidth: "370px",
+                    width: "370px",
                   }}
                 >
                   {cart.map((item) => {
@@ -240,7 +240,7 @@ export default function StaticHeader() {
                           }}
                         >
                           <div className="imgCart">
-                            <Link>
+                            <Link to={`/Shop/Products/${item.id}`}>
                               <img
                                 src={item.image_path}
                                 style={{ width: "100px" }}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchItmes } from "../RTK/Slices/Itmes-slice";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Slider() {
   const dispatch = useDispatch();
@@ -54,7 +55,9 @@ function Slider() {
           <div className="text">
             <h2 className="h2">{sliderContnet[index].name}</h2>
             <p className="p">{sliderContnet[index].description}</p>
-            <button className="shop-btn">SHOP NOW</button>
+            <Link to={`/Shop`}>
+              <button className="shop-btn">SHOP NOW</button>
+            </Link>
           </div>
           <img
             src={`${sliderContnet[index].image_path}`}

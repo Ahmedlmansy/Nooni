@@ -9,23 +9,30 @@ const DropDownMu = ({ title, items }) => {
 
   return (
     <div
-    
       style={{ position: "relative" }}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <span style={{textTransform: "uppercase"}}>
+      <span style={{ textTransform: "uppercase" }}>
         {title} <KeyboardArrowDownIcon fontSize="small" />
       </span>
       <motion.div
         className="dropDown"
-        initial={{ opacity: 0, y: -10, scale: 0.9  , display :"none"}}
-        animate={isOpen ? { opacity: 1, y: 0, scale: 1  , display : "block" , zIndex : "555" } : { opacity: 0, y: -10, scale: 0.9 }}
+        initial={{ opacity: 0, y: -10, scale: 0.9, display: "none" }}
+        animate={
+          isOpen
+            ? { opacity: 1, y: 0, scale: 1, display: "block", zIndex: "555" }
+            : { opacity: 0, y: -10, scale: 0.9 }
+        }
         transition={{ duration: 0.3 }}
       >
         <ul className="p-0 m-0" style={{ listStyle: "none" }}>
           {items.map((item, i) => (
-            <li className="mb-2 px-3 dropDownLink" key={i} style={{textTransform: "uppercase"}} >
+            <li
+              className="mb-2 px-3 dropDownLink"
+              key={i}
+              style={{ textTransform: "uppercase" }}
+            >
               {item}
             </li>
           ))}
@@ -35,10 +42,6 @@ const DropDownMu = ({ title, items }) => {
   );
 };
 
-
-
-
-
 function AllHeader() {
   return (
     <>
@@ -47,19 +50,17 @@ function AllHeader() {
           <div>
             <p className="m-0 textTop">
               Up to 40% off Best-Selling Furniture.{" "}
-              <Link to={"/"} className="shop">
+              <Link to={"/Shop"} className="shop">
                 Shop Now
               </Link>
             </p>
           </div>
-          <div style={{display: "flex"}}>
-            <DropDownMu title="English" items={[ "Français" ,"Deutsch"]} />
+          <div style={{ display: "flex" }}>
+            <DropDownMu title="English" items={["Français", "Deutsch"]} />
             <DropDownMu title="Usd" items={["usd", "eur"]} />
           </div>
         </Container>
-        
       </div>
-            
     </>
   );
 }

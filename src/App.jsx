@@ -5,6 +5,7 @@ import ViewCart from "./pages/ViewCart";
 import CheckoutPage from "./pages/Checkout";
 import Shop from "./pages/Shop";
 import Category from "./pages/Category";
+import ProductsDetalis from "./pages/ProductsDetalis";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Checkout" element={<CheckoutPage />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Shop/:Category" element={<Category />} />
+        <Route path="/Shop/Products/:id" element={<ProductsDetalis />} />
       </Routes>
     </>
   );

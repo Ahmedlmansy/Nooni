@@ -276,7 +276,7 @@ function Shop() {
               {currentItems.length > 0 ? (
                 currentItems.map((product) => (
                   <Col lg={4} md={6} sm={12} key={product.id}>
-                    <Link to={"/"}>
+                    <Link to={`/Shop/Products/${product.id}`}>
                       <div className="cardProduct">
                         <div className="price_fav">
                           <div className="price">

@@ -5,8 +5,8 @@ import { fetchItmes } from "../RTK/Slices/Itmes-slice";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { toggleFav } from "../RTK/Slices/favorites-slice";
@@ -30,7 +30,7 @@ function ShowProducts() {
   const allData = allItems?.data || [];
 
   const randomItems = useMemo(() => {
-    return [...allData].sort(() => Math.random() - 0.5).slice(0, 10);
+    return [...allData].sort(() => Math.random() - 0.5).slice(0, 6);
   }, [allData]);
   // Status loading
 
@@ -58,7 +58,7 @@ function ShowProducts() {
       {randomItems?.map((product) => {
         return (
           <Col lg={4} md={6} sm={12} key={product.id}>
-            <Link to={"/"}>
+            <Link to={`/Shop/Products/${product.id}`}>
               <div className="cardProduct">
                 <div className="price_fav">
                   <div className="price">

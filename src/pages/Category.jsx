@@ -22,6 +22,7 @@ function Category() {
     document.title = `Nooni - ${Category}`;
     dispatch(fetchItmes());
   }, [dispatch, Category]);
+
   // Equipment for the discount account
   function calculateDiscount(originPrice, discountPrice) {
     let discountPercentage =
