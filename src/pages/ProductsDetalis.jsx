@@ -46,7 +46,13 @@ function ProductsDetalis() {
                       <Col lg={6} md={6} sm={12} key={product.id}>
                         <img src={product.image_path} className="w-100" />
                       </Col>
-                      <Col lg={6} md={6} sm={12} className="p-3">
+                      <Col
+                        lg={6}
+                        md={6}
+                        sm={12}
+                        key={product.id + 1}
+                        className="p-3"
+                      >
                         <div
                           className="wishlist mb-4"
                           style={{

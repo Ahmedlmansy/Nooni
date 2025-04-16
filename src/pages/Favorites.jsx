@@ -17,6 +17,7 @@ import { toggleFav } from "../RTK/Slices/favorites-slice";
 import BasicBreadcrumbs from "../componats/Routed";
 import { addToCart } from "../RTK/Slices/addToCart-slice";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 function Favorites() {
   const [width, setWidth] = useState(window.innerWidth); // 770
   window.addEventListener("resize", () => {
@@ -71,10 +72,12 @@ function Favorites() {
                         }}
                       >
                         <TableCell component="th" scope="row">
-                          <div className="imgd" style={{ width: "100px" }}>
-                            <img src={product.image_path} className="w-100" />
-                            {product.name}
-                          </div>
+                          <Link to={`/Shop/Products/${product.id}`}>
+                            <div className="imgd" style={{ width: "100px" }}>
+                              <img src={product.image_path} className="w-100" />
+                              {product.name}
+                            </div>
+                          </Link>
                         </TableCell>
                         <TableCell align="right">
                           <div className="price">
@@ -146,9 +149,14 @@ function Favorites() {
                           gap: "20px",
                         }}
                       >
-                        <div className="w-50">
-                          <img src={product.image_path} className="w-100" />
-                        </div>
+                        <Link
+                          to={`/Shop/Products/${product.id}`}
+                          className="w-50"
+                        >
+                          <div className="imgd">
+                            <img src={product.image_path} className="w-100" />
+                          </div>
+                        </Link>
                         <div className="w-50">
                           <div className="price">
                             <h5>{product.name}</h5>

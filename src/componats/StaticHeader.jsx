@@ -7,9 +7,11 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
+  addToCart,
 } from "../RTK/Slices/addToCart-slice";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Drawer from "@mui/material/Drawer";
 import ClearIcon from "@mui/icons-material/Clear";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -17,8 +19,19 @@ import DehazeIcon from "@mui/icons-material/Dehaze";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { Col, Row } from "react-bootstrap";
 export default function StaticHeader() {
   const dispatch = useDispatch();
+  // search for products
+  const [searchTerm, setSearchTerm] = useState("");
+  const allItems = useSelector((state) => state.items.items);
+  const allData = allItems?.data;
+  const filteredProducts = Array.isArray(allData)
+    ? allData.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
   // use Cart from store
   const cart = useSelector((stats) => stats.cart);
   // Subtotal
@@ -29,6 +42,13 @@ export default function StaticHeader() {
           0
         )
       : 0;
+  // toggleDrawer to open and close the drawer
+  const [open, setOpen] = useState(null);
+
+  const toggleDrawer = (drawerId) => {
+    setOpen(drawerId);
+  };
+
   // header styled after scroling
   const [isFixed, setIsFixed] = useState(false);
   useEffect(() => {
@@ -46,12 +66,6 @@ export default function StaticHeader() {
     };
   });
 
-  // toggleDrawer to open and close the drawer
-  const [open, setOpen] = useState(null);
-
-  const toggleDrawer = (drawerId) => {
-    setOpen(drawerId);
-  };
   const favorites = useSelector((stats) => stats.favorites);
   return (
     <>
@@ -99,10 +113,17 @@ export default function StaticHeader() {
               </Link>
             </ul>
           </Drawer>
-          <Link to={"/"} onClick={() => toggleDrawer("Drawer Search")}>
+          <Link
+            to={"/"}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleDrawer("Drawer Search");
+            }}
+          >
             <SearchIcon className="mx-2" />
           </Link>
           <Drawer
+            style={{ maxWidth: "380px" }}
             open={open === "Drawer Search"}
             anchor="right"
             onClose={() => toggleDrawer(null)}
@@ -112,7 +133,7 @@ export default function StaticHeader() {
               style={{ justifyContent: "space-between" }}
               onClick={() => toggleDrawer(null)}
             >
-              <span>Search for products (0) </span>
+              <span>Search for products {filteredProducts.length}</span>
               <ClearIcon />
             </div>
             <div className="searchItems w0">
@@ -120,9 +141,69 @@ export default function StaticHeader() {
                 type="text"
                 placeholder="Search For Products ..."
                 className="5"
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
               />
               <SearchOutlinedIcon className="w5" />
             </div>
+            <Row className="p-3">
+              {searchTerm.length > 0 ? (
+                filteredProducts.length > 0 ? (
+                  filteredProducts.map((product) => (
+                    <div key={product.id}>
+                      <Col
+                        className="mb-3"
+                        style={{ cursor: "pointer", display: "flex" }}
+                      >
+                        <div className="productCard w-50 p-2">
+                          <Link
+                            to={`Shop/Products/${product.id}`}
+                            className="text-dark"
+                          >
+                            <img src={product.image_path} className="w-100" />
+                          </Link>
+                        </div>
+                        <div className="w-50 p-3 d-flex flex-column justify-content-between">
+                          <Link
+                            to={`Shop/Products/${product.id}`}
+                            className="text-dark"
+                          >
+                            <h5 className="m-0">{product.name}</h5>
+                          </Link>
+                          <div className="price my-2">
+                            <span className="originPrice">
+                              ${product.price}
+                            </span>{" "}
+                            <span className="discountPrice">
+                              ${product.discount_price}{" "}
+                            </span>{" "}
+                          </div>
+                          <div className="addToCart w-100 ">
+                            <button
+                              className="w-100"
+                              onClick={(e) => {
+                                dispatch(addToCart(product));
+                                e.preventDefault();
+                              }}
+                            >
+                              <AddShoppingCartIcon
+                                style={{ color: "#fff", fontSize: "15px" }}
+                              />{" "}
+                              Add To Cart
+                            </button>
+                          </div>
+                        </div>
+                      </Col>
+                    </div>
+                  ))
+                ) : (
+                  <p> No products were found </p>
+                )
+              ) : (
+                <p></p>
+              )}
+            </Row>
           </Drawer>
         </div>
 
@@ -137,7 +218,11 @@ export default function StaticHeader() {
           </Link>
 
           <Link to={"/Wishlist"}>
-            <Badge color="default" badgeContent={favorites.length} max={999}>
+            <Badge
+              color="default"
+              badgeContent={`${favorites.length}`}
+              max={999}
+            >
               <FavoriteBorderIcon className="mx-2" />
             </Badge>
           </Link>

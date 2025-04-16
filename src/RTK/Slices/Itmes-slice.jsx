@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchItmes = createAsyncThunk(
   "furniture/fetchFurniture",
   async () => {
-    const res = await fetch("https://furniture-api.fly.dev/v1/products?limit=100");
+    const res = await fetch(
+      "https://furniture-api.fly.dev/v1/products?limit=100"
+    );
     const data = await res.json();
     return data;
   }

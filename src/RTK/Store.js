@@ -6,6 +6,7 @@ import cartReducer from "./Slices/addToCart-slice.jsx";
 const store = configureStore({
   reducer: {
     items: itemsReducer,
+    search: itemsReducer,
     favorites: favoritesReducer,
     cart: cartReducer,
   },
