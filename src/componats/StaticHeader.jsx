@@ -133,7 +133,7 @@ export default function StaticHeader() {
               style={{ justifyContent: "space-between" }}
               onClick={() => toggleDrawer(null)}
             >
-              <span>Search for products {filteredProducts.length}</span>
+              <span>Search for products ( {filteredProducts.length})</span>
               <ClearIcon />
             </div>
             <div className="searchItems w0">
@@ -307,8 +307,6 @@ export default function StaticHeader() {
                 <div
                   className="cartItems"
                   style={{
-                    height: "560px",
-                    overflowX: "scroll",
                     width: "370px",
                   }}
                 >
@@ -389,7 +387,6 @@ export default function StaticHeader() {
                   <div
                     className=""
                     style={{
-                      position: "fixed",
                       bottom: "0",
                       background: "#fff",
                       width: "370px",
