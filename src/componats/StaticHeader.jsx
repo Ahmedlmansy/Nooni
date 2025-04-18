@@ -99,9 +99,9 @@ export default function StaticHeader() {
               <Link to={"/Shop"} className="linkNav">
                 <li className="linkDrawer">Shop</li>
               </Link>
-              <Link to={"/"} className="linkNav">
+              {/* <Link to={"/"} className="linkNav">
                 <li className="linkDrawer">Products</li>
-              </Link>
+              </Link> */}
               <Link to={"/"} className="linkNav">
                 <li className="linkDrawer">Blog</li>
               </Link>
