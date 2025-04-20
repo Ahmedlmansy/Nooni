@@ -21,7 +21,11 @@ function CheckoutPage() {
   useEffect(() => {
     document.title = "Nooni - Checkout";
   }, []);
-
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -61,6 +65,18 @@ function CheckoutPage() {
   });
   const handleInputChange = (e) => {
     const { id, value } = e.target;
+    const newErrors = { ...errors };
+    if (id === "firstName" || id === "lastName") {
+      const hasNumber = /\d/.test(value);
+      newErrors[id] = hasNumber ? "The name must not contain numbers!" : "";
+    }
+    if (id === "phoneNumber") {
+      const isNumeric = /^\d*$/.test(value);
+      newErrors.phoneNumber = isNumeric
+        ? ""
+        : "Numbers should only be entered into the phone number";
+    }
+    setErrors(newErrors);
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
@@ -161,6 +177,8 @@ function CheckoutPage() {
                 variant="outlined"
                 className="w-50"
                 onChange={handleInputChange}
+                error={!!errors.firstName}
+                helperText={errors.firstName}
                 value={formData.firstName}
               />
               <TextField
@@ -169,6 +187,8 @@ function CheckoutPage() {
                 variant="outlined"
                 className="w-50"
                 onChange={handleInputChange}
+                error={!!errors.lastName}
+                helperText={errors.lastName}
                 value={formData.lastName}
               />
             </Box>
@@ -195,13 +215,15 @@ function CheckoutPage() {
             </Box>
             <Box className="mt-3">
               <TextField
-                type="number"
+                type="text"
                 className="w-100"
                 id="phoneNumber"
                 label="Phone Number"
                 variant="outlined"
                 onChange={handleInputChange}
                 value={formData.phoneNumber}
+                error={!!errors.phoneNumber}
+                helperText={errors.phoneNumber}
               />
             </Box>
             <Box className="mt-3">
@@ -408,7 +430,10 @@ function CheckoutPage() {
                     formData.lastName === "" ||
                     formData.phoneNumber === "" ||
                     formData.streetAddress === "" ||
-                    formData.townCity === ""
+                    formData.townCity === "" ||
+                    errors.firstName ||
+                    errors.lastName ||
+                    errors.phoneNumber
                   }
                   className="btn btn-primary my-1 w-100"
                   onClick={handleFormSubmit}
