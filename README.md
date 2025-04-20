@@ -26,6 +26,5 @@ Explore the live version of Nooni: [Live Demo](https://nooin.netlify.app/)
 
 To run Nooni locally, follow these steps:
 
-1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/nooni.git
+   npm run dev
